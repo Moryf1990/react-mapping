@@ -32609,11 +32609,15 @@ module.exports = React.createClass({
 
 var React = require('react');
 var CatComponent = require('./CatComponent');
+var Cats = require('../data/cats');
 
 module.exports = React.createClass({
 	displayName: 'exports',
 
 	render: function render() {
+		var allCats = Cats.map(function (cat) {
+			return React.createElement(CatComponent, { key: cat.cid, cat: cat });
+		});
 		return React.createElement(
 			'div',
 			{ className: 'row' },
@@ -32648,13 +32652,17 @@ module.exports = React.createClass({
 						)
 					)
 				),
-				React.createElement('tbody', null)
+				React.createElement(
+					'tbody',
+					null,
+					allCats
+				)
 			)
 		);
 	}
 });
 
-},{"./CatComponent":164,"react":159}],166:[function(require,module,exports){
+},{"../data/cats":172,"./CatComponent":164,"react":159}],166:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32696,11 +32704,15 @@ module.exports = React.createClass({
 
 var React = require('react');
 var ProductComponent = require('./ProductComponent');
+var Products = require('../data/products');
 
 module.exports = React.createClass({
 	displayName: 'exports',
 
 	render: function render() {
+		var allProducts = Products.map(function (product) {
+			return React.createElement(ProductComponent, { key: product.cid, product: product });
+		});
 		return React.createElement(
 			'div',
 			{ className: 'row' },
@@ -32740,13 +32752,17 @@ module.exports = React.createClass({
 						)
 					)
 				),
-				React.createElement('tbody', null)
+				React.createElement(
+					'tbody',
+					null,
+					allProducts
+				)
 			)
 		);
 	}
 });
 
-},{"./ProductComponent":166,"react":159}],168:[function(require,module,exports){
+},{"../data/products":173,"./ProductComponent":166,"react":159}],168:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32761,42 +32777,42 @@ module.exports = React.createClass({
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.quarterback.get('name')
 			),
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.quarterback.get('team')
 			),
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.quarterback.get('attempts')
 			),
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.quarterback.get('completions')
 			),
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.quarterback.get('yards')
 			),
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.quarterback.get('touchdowns')
 			),
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.quarterback.get('interceptions')
 			),
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.quarterback.get('sacks')
 			)
 		);
 	}
@@ -32807,11 +32823,15 @@ module.exports = React.createClass({
 
 var React = require('react');
 var QuarterbackComponent = require('./QuarterbackComponent');
+var Quarterbacks = require('../data/quarterbacks');
 
 module.exports = React.createClass({
 	displayName: 'exports',
 
 	render: function render() {
+		var allQuarterbacks = Quarterbacks.map(function (quarterback) {
+			return React.createElement(QuarterbackComponent, { key: quarterback.cid, quarterback: quarterback });
+		});
 		return React.createElement(
 			'div',
 			{ className: 'row' },
@@ -32871,13 +32891,17 @@ module.exports = React.createClass({
 						)
 					)
 				),
-				React.createElement('tbody', null)
+				React.createElement(
+					'tbody',
+					null,
+					allQuarterbacks
+				)
 			)
 		);
 	}
 });
 
-},{"./QuarterbackComponent":168,"react":159}],170:[function(require,module,exports){
+},{"../data/quarterbacks":174,"./QuarterbackComponent":168,"react":159}],170:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -32885,7 +32909,22 @@ var React = require('react');
 module.exports = React.createClass({
 	displayName: 'exports',
 
-	render: function render() {}
+	render: function render() {
+		return React.createElement(
+			'tr',
+			null,
+			React.createElement(
+				'td',
+				null,
+				this.props.todo.get('description')
+			),
+			React.createElement(
+				'td',
+				null,
+				this.props.todo.get('completed')
+			)
+		);
+	}
 });
 
 },{"react":159}],171:[function(require,module,exports){
@@ -32893,11 +32932,15 @@ module.exports = React.createClass({
 
 var React = require('react');
 var TodoComponent = require('./TodoComponent');
+var Todos = require('../data/todos');
 
 module.exports = React.createClass({
 	displayName: 'exports',
 
 	render: function render() {
+		var allTodos = Todos.map(function (todo) {
+			return React.createElement(TodoComponent, { key: todo.cid, todo: todo });
+		});
 		return React.createElement(
 			'div',
 			{ className: 'row' },
@@ -32905,12 +32948,39 @@ module.exports = React.createClass({
 				'h1',
 				null,
 				'Todos'
+			),
+			React.createElement(
+				'table',
+				{ className: 'table' },
+				React.createElement(
+					'thead',
+					null,
+					React.createElement(
+						'tr',
+						null,
+						React.createElement(
+							'th',
+							null,
+							'Description'
+						),
+						React.createElement(
+							'th',
+							null,
+							'Completed'
+						)
+					)
+				),
+				React.createElement(
+					'tbody',
+					null,
+					allTodos
+				)
 			)
 		);
 	}
 });
 
-},{"./TodoComponent":170,"react":159}],172:[function(require,module,exports){
+},{"../data/todos":175,"./TodoComponent":170,"react":159}],172:[function(require,module,exports){
 'use strict';
 
 var CatCollection = require('../collections/CatCollection');

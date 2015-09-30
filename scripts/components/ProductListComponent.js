@@ -1,8 +1,12 @@
 var React = require('react');
 var ProductComponent = require('./ProductComponent');
+var Products=require('../data/products');
 
 module.exports = React.createClass({
 	render: function() {
+		var allProducts=Products.map(function(product){
+			return <ProductComponent key={product.cid} product={product}/>
+		});
 		return (
 			<div className="row">
 				<h1>Products</h1>
@@ -16,6 +20,7 @@ module.exports = React.createClass({
 						</tr>
 					</thead>
 					<tbody>
+					{allProducts}
 					</tbody>
 				</table>
 			</div>
